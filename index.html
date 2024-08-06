@@ -3,103 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Harry Ramesh's Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        section {
+            padding: 20px;
+            margin: 10px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .project {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #333;
+            color: #fff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        @media (max-width: 600px) {
+            nav ul li {
+                display: block;
+                margin: 5px 0;
+            }
+        }
+    </style>
 </head>
-<body> 
-
+<body>
     <header>
-        <h1>Welcome to My Portfolio</h1>
+        <h1>Welcome to Harry Ramesh's Portfolio</h1>
         <nav>
             <ul>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#hobbies">Hobbies</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
-    
+
     <section id="about">
         <h2>About Me</h2>
-        <p>This is a brief introduction about myself.</p>
+        <p>My name is Harry Ramesh, and I am a 15-year-old student at St. Francis Catholic College. I have a passion for learning and exploring new ideas. At school, I enjoy subjects like science and mathematics, and I am actively involved in various extracurricular activities, including the robotics club and the debate team. I believe in the importance of community service and often volunteer at local charities. My goal is to pursue a career in technology, where I can combine my love for innovation with my desire to make a positive impact in the world.</p>
     </section>
 
     <section id="projects">
         <h2>My Projects</h2>
         <div class="project">
-            <h3>Project Title 1</h3>
-            <p>Description of project 1.</p>
+            <h3>Project Title 1: Robotics Club Project</h3>
+            <p>This project involved designing and building a robot that can navigate through a maze. I worked with my team to program the robot using Arduino and learned valuable skills in coding and teamwork.</p>
         </div>
         <div class="project">
-            <h3>Project Title 2</h3>
-            <p>Description of project 2.</p>
+            <h3>Project Title 2: Science Fair Experiment</h3>
+            <p>For the annual science fair, I conducted an experiment on renewable energy sources. I created a model wind turbine and demonstrated how it could generate electricity, which sparked interest among my peers and teachers.</p>
         </div>
+        <div class="project">
+            <h3>Project Title 3: Website Development</h3>
+            <p>I created a personal website using HTML, CSS, and JavaScript to showcase my projects and skills. This project taught me the basics of web development and design.</p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>My Skills</h2>
+        <ul>
+            <li>Programming Languages: Python, Java, HTML, CSS</li>
+            <li>Web Development: HTML, CSS, JavaScript</li>
+            <li>Robotics: Arduino, Raspberry Pi</li>
+            <li>Soft Skills: Teamwork, Leadership, Communication</li>
+        </ul>
+    </section>
+
+    <section id="hobbies">
+        <h2>My Hobbies</h2>
+        <p>In my free time, I enjoy:</p>
+        <ul>
+            <li>Playing video games</li>
+            <li>Reading science fiction novels</li>
+            <li>Building model kits</li>
+            <li>Volunteering at local charities</li>
+        </ul>
     </section>
 
     <section id="contact">
         <h2>Contact Me</h2>
-        <p>Email: <a href="mailto:example@example.com">example@example.com</a></p>
+        <p>If you'd like to get in touch, feel free to reach out via email:</p>
+        <p>Email: <a href="mailto:harry.ramesh@example.com">harry.ramesh@example.com</a></p>
     </section>
 
     <footer>
-        <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+        <p>&copy; 2024 Harry Ramesh. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Example JavaScript code (optional)
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("Document loaded and ready!");
+        });
+    </script>
 </body>
 </html>
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-}
-
-header {
-    background: #333;
-    color: #fff;
-    padding: 10px 0;
-    text-align: center;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-section {
-    padding: 20px;
-    margin: 10px;
-}
-
-.project {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px 0;
-}
-
-footer {
-    text-align: center;
-    padding: 10px;
-    background: #333;
-    color: #fff;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-// Example JavaScript code (optional)
-document.addEventListener('DOMContentLoaded', () => {
-    console.log("Document loaded and ready!");
-});
