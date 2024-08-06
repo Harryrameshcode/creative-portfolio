@@ -1,3 +1,4 @@
+Copy
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,6 +42,7 @@
         }
         h2 {
             color: #4CAF50;
+            margin-bottom: 10px;
         }
         .project {
             border: 1px solid #ccc;
@@ -61,12 +63,12 @@
             bottom: 0;
             width: 100%;
         }
-        .skills-list, .hobbies-list {
+        .skills-list, .hobbies-list, .shared-projects {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
         }
-        .skill, .hobby {
+        .skill, .hobby, .shared-project {
             background: #f4f4f4;
             border-radius: 5px;
             padding: 10px;
@@ -74,12 +76,36 @@
             flex: 1 1 30%;
             text-align: center;
         }
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .form-container input, .form-container textarea {
+            width: 80%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .form-container button:hover {
+            background: #45a049;
+        }
         @media (max-width: 600px) {
             nav ul li {
                 display: block;
                 margin: 5px 0;
             }
-            .skills-list, .hobbies-list {
+            .skills-list, .hobbies-list, .shared-projects {
                 flex-direction: column;
                 align-items: center;
             }
@@ -95,6 +121,7 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#hobbies">Hobbies</a></li>
+                <li><a href="#share-project">Share Your Project</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -144,6 +171,9 @@
             <div class="skill">Robotics: Arduino Programming</div>
             <div class="skill">Public Speaking: Debate Team Member</div>
             <div class="skill">Team Collaboration: Group Projects</div>
+            <div class="skill">Graphic Design: Adobe Photoshop</div>
+            <div class="skill">Data Analysis: Excel, Python</div>
+            <div class="skill">Social Media Management: Content Creation</div>
         </div>
     </section>
 
@@ -156,13 +186,28 @@
             <div class="hobby">Photography</div>
             <div class="hobby">Playing Video Games</div>
             <div class="hobby">Exploring Nature</div>
+            <div class="hobby">Cooking New Recipes</div>
+            <div class="hobby">Learning New Languages</div>
+            <div class="hobby">Listening to Podcasts</div>
         </div>
+    </section>
+
+    <section id="share-project">
+        <h2>Share Your Project</h2>
+        <div class="form-container">
+            <input type="text" id="projectTitle" placeholder="Project Title" required>
+            <textarea id="projectDescription" placeholder="Project Description" rows="5" required></textarea>
+            <input type="text" id="projectTech" placeholder="Technologies Used" required>
+            <button onclick="shareProject()">Share Project</button>
+        </div>
+        <h3>Shared Projects</h3>
+        <div id="sharedProjects" class="shared-projects"></div>
     </section>
 
     <section id="contact">
         <h2>Contact Me</h2>
         <p>If you would like to get in touch, feel free to reach out via email or connect with me on social media!</p>
-        <p><strong>Email:</strong> harryramesh124@gmail.com</p>
+        <p><strong>Email:</strong> harry.ramesh@example.com</p>
         <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/harryramesh" target="_blank">linkedin.com/in/harryramesh</a></p>
         <p><strong>GitHub:</strong> <a href="https://github.com/harryrameshcode" target="_blank">github.com/harryrameshcode</a></p>
     </section>
@@ -170,5 +215,27 @@
     <footer>
         <p>&copy; 2024 Harry Ramesh. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        function shareProject() {
+            const title = document.getElementById('projectTitle').value;
+            const description = document.getElementById('projectDescription').value;
+            const technologies = document.getElementById('projectTech').value;
+            
+            if (title && description && technologies) {
+                const projectContainer = document.createElement('div');
+                projectContainer.classList.add('shared-project');
+                projectContainer.innerHTML = `<h4>${title}</h4><p>${description}</p><p><strong>Technologies Used:</strong> ${technologies}</p>`;
+                document.getElementById('sharedProjects').appendChild(projectContainer);
+                
+                // Clear input fields
+                document.getElementById('projectTitle').value = '';
+                document.getElementById('projectDescription').value = '';
+                document.getElementById('projectTech').value = '';
+            } else {
+                alert('Please fill in all fields.');
+            }
+        }
+    </script>
 </body>
 </html>
