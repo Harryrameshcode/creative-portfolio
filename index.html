@@ -1,28 +1,30 @@
-Copy
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Harry Ramesh's Creative Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            background-color: #eaeaea;
+            background-color: #f4f4f4;
             color: #333;
         }
         header {
-            background: #4CAF50;
+            background: linear-gradient(90deg, #4CAF50, #2E7D32);
             color: #fff;
             padding: 20px 0;
             text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
         nav ul {
             list-style: none;
             padding: 0;
+            margin: 0;
         }
         nav ul li {
             display: inline;
@@ -32,6 +34,10 @@ Copy
             color: #fff;
             text-decoration: none;
             font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #FFD700;
         }
         section {
             padding: 20px;
@@ -43,43 +49,53 @@ Copy
         h2 {
             color: #4CAF50;
             margin-bottom: 10px;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 5px;
         }
-        .project {
+        .project, .shared-project {
             border: 1px solid #ccc;
             padding: 10px;
             margin: 10px 0;
             border-radius: 5px;
             transition: 0.3s;
+            background: #f9f9f9;
         }
-        .project:hover {
+        .project:hover, .shared-project:hover {
             box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
+            transform: translateY(-2px);
         }
         footer {
             text-align: center;
-            padding: 10px;
+            padding: 20px;
             background: #4CAF50;
             color: #fff;
             position: relative;
             bottom: 0;
             width: 100%;
+            margin-top: 20px;
         }
         .skills-list, .hobbies-list, .shared-projects {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
         }
-        .skill, .hobby, .shared-project {
+        .skill, .hobby {
             background: #f4f4f4;
             border-radius: 5px;
             padding: 10px;
             margin: 5px;
             flex: 1 1 30%;
             text-align: center;
+            transition: background 0.3s;
+        }
+        .skill:hover, .hobby:hover {
+            background: #eaeaea;
         }
         .form-container {
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin: 20px 0;
         }
         .form-container input, .form-container textarea {
             width: 80%;
@@ -87,6 +103,11 @@ Copy
             margin: 5px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
+            transition: border 0.3s;
+        }
+        .form-container input:focus, .form-container textarea:focus {
+            border-color: #4CAF50;
+            outline: none;
         }
         .form-container button {
             background: #4CAF50;
@@ -99,6 +120,17 @@ Copy
         }
         .form-container button:hover {
             background: #45a049;
+        }
+        .project-title {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .project-description {
+            margin: 5px 0;
+        }
+        .project-tech {
+            font-style: italic;
+            color: #777;
         }
         @media (max-width: 600px) {
             nav ul li {
@@ -136,29 +168,39 @@ Copy
     <section id="projects">
         <h2>My Projects</h2>
         <div class="project">
-            <h3>Project Title 1: Robotics Club Project</h3>
-            <p>This project involved designing and building a robot that can navigate through a maze. I worked with my team to program the robot using Arduino and learned valuable skills in coding and teamwork.</p>
-            <p><strong>Technologies Used:</strong> Arduino, C++, Team Collaboration</p>
+            <h3 class="project-title">Robotics Club Project</h3>
+            <p class="project-description">This project involved designing and building a robot that can navigate through a maze. I worked with my team to program the robot using Arduino and learned valuable skills in coding and teamwork.</p>
+            <p class="project-tech"><strong>Technologies Used:</strong> Arduino, C++, Team Collaboration</p>
         </div>
         <div class="project">
-            <h3>Project Title 2: Science Fair Experiment</h3>
-            <p>For the annual science fair, I conducted an experiment on renewable energy sources. I created a model wind turbine and demonstrated how it could generate electricity, which sparked interest among my peers and teachers.</p>
-            <p><strong>Technologies Used:</strong> Renewable Energy Models, Presentation Skills</p>
+            <h3 class="project-title">Science Fair Experiment</h3>
+            <p class="project-description">For the annual science fair, I conducted an experiment on renewable energy sources. I created a model wind turbine and demonstrated how it could generate electricity, which sparked interest among my peers and teachers.</p>
+            <p class="project-tech"><strong>Technologies Used:</strong> Renewable Energy Models, Presentation Skills</p>
         </div>
         <div class="project">
-            <h3>Project Title 3: Website Development</h3>
-            <p>I created a personal website using HTML, CSS, and JavaScript to showcase my projects and skills. This project taught me the basics of web development and design.</p>
-            <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript</p>
+            <h3 class="project-title">Website Development</h3>
+            <p class="project-description">I created a personal website using HTML, CSS, and JavaScript to showcase my projects and skills. This project taught me the basics of web development and design.</p>
+            <p class="project-tech"><strong>Technologies Used:</strong> HTML, CSS, JavaScript</p>
         </div>
         <div class="project">
-            <h3>Project Title 4: Mobile App Development</h3>
-            <p>Developed a simple mobile app that helps students track their homework assignments and deadlines. This project improved my understanding of mobile app frameworks.</p>
-            <p><strong>Technologies Used:</strong> React Native, JavaScript</p>
+            <h3 class="project-title">Mobile App Development</h3>
+            <p class="project-description">Developed a simple mobile app that helps students track their homework assignments and deadlines. This project improved my understanding of mobile app frameworks.</p>
+            <p class="project-tech"><strong>Technologies Used:</strong> React Native, JavaScript</p>
         </div>
         <div class="project">
-            <h3>Project Title 5: Community Service Website</h3>
-            <p>Created a website for a local charity to help them reach more volunteers. The site features event listings and volunteer sign-up forms.</p>
-            <p><strong>Technologies Used:</strong> WordPress, HTML, CSS</p>
+            <h3 class="project-title">Community Service Website</h3>
+            <p class="project-description">Created a website for a local charity to help them reach more volunteers. The site features event listings and volunteer sign-up forms.</p>
+            <p class="project-tech"><strong>Technologies Used:</strong> WordPress, HTML, CSS</p>
+        </div>
+        <div class="project">
+            <h3 class="project-title">Personal Finance Tracker</h3>
+            <p class="project-description">Built a web application to help users track their expenses and savings. This project enhanced my skills in JavaScript and data management.</p>
+            <p class="project-tech"><strong>Technologies Used:</strong> JavaScript, HTML, CSS</p>
+        </div>
+        <div class="project">
+            <h3 class="project-title">Interactive Quiz App</h3>
+            <p class="project-description">Developed an interactive quiz application that allows users to test their knowledge on various subjects. This project improved my skills in user interface design.</p>
+            <p class="project-tech"><strong>Technologies Used:</strong> React, CSS</p>
         </div>
     </section>
 
@@ -174,6 +216,8 @@ Copy
             <div class="skill">Graphic Design: Adobe Photoshop</div>
             <div class="skill">Data Analysis: Excel, Python</div>
             <div class="skill">Social Media Management: Content Creation</div>
+            <div class="skill">Game Development: Unity</div>
+            <div class="skill">Machine Learning: Basic Concepts</div>
         </div>
     </section>
 
@@ -189,6 +233,8 @@ Copy
             <div class="hobby">Cooking New Recipes</div>
             <div class="hobby">Learning New Languages</div>
             <div class="hobby">Listening to Podcasts</div>
+            <div class="hobby">Traveling to New Places</div>
+            <div class="hobby">Writing Short Stories</div>
         </div>
     </section>
 
@@ -225,7 +271,7 @@ Copy
             if (title && description && technologies) {
                 const projectContainer = document.createElement('div');
                 projectContainer.classList.add('shared-project');
-                projectContainer.innerHTML = `<h4>${title}</h4><p>${description}</p><p><strong>Technologies Used:</strong> ${technologies}</p>`;
+                projectContainer.innerHTML = `<h4 class="project-title">${title}</h4><p class="project-description">${description}</p><p class="project-tech"><strong>Technologies Used:</strong> ${technologies}</p>`;
                 document.getElementById('sharedProjects').appendChild(projectContainer);
                 
                 // Clear input fields
