@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harry Ramesh's Portfolio</title>
+    <title>Harry Ramesh's Creative Portfolio</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            background-color: #f4f4f4;
+            background-color: #eaeaea;
+            color: #333;
         }
         header {
-            background: #333;
+            background: #4CAF50;
             color: #fff;
             padding: 20px 0;
             text-align: center;
@@ -29,6 +30,7 @@
         nav ul li a {
             color: #fff;
             text-decoration: none;
+            font-weight: bold;
         }
         section {
             padding: 20px;
@@ -37,32 +39,56 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
+        h2 {
+            color: #4CAF50;
+        }
         .project {
             border: 1px solid #ccc;
             padding: 10px;
             margin: 10px 0;
             border-radius: 5px;
+            transition: 0.3s;
+        }
+        .project:hover {
+            box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
         }
         footer {
             text-align: center;
             padding: 10px;
-            background: #333;
+            background: #4CAF50;
             color: #fff;
             position: relative;
             bottom: 0;
             width: 100%;
+        }
+        .skills-list, .hobbies-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .skill, .hobby {
+            background: #f4f4f4;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 5px;
+            flex: 1 1 30%;
+            text-align: center;
         }
         @media (max-width: 600px) {
             nav ul li {
                 display: block;
                 margin: 5px 0;
             }
+            .skills-list, .hobbies-list {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to Harry Ramesh's Portfolio</h1>
+        <h1>Welcome to Harry Ramesh's Creative Portfolio</h1>
         <nav>
             <ul>
                 <li><a href="#about">About</a></li>
@@ -77,6 +103,7 @@
     <section id="about">
         <h2>About Me</h2>
         <p>My name is Harry Ramesh, and I am a 15-year-old student at St. Francis Catholic College. I have a passion for learning and exploring new ideas. At school, I enjoy subjects like science and mathematics, and I am actively involved in various extracurricular activities, including the robotics club and the debate team. I believe in the importance of community service and often volunteer at local charities. My goal is to pursue a career in technology, where I can combine my love for innovation with my desire to make a positive impact in the world.</p>
+        <p>In my spare time, I love reading about new technology trends, coding, and working on personal projects that challenge my skills and creativity. I am always eager to learn new things and improve myself.</p>
     </section>
 
     <section id="projects">
@@ -84,53 +111,64 @@
         <div class="project">
             <h3>Project Title 1: Robotics Club Project</h3>
             <p>This project involved designing and building a robot that can navigate through a maze. I worked with my team to program the robot using Arduino and learned valuable skills in coding and teamwork.</p>
+            <p><strong>Technologies Used:</strong> Arduino, C++, Team Collaboration</p>
         </div>
         <div class="project">
             <h3>Project Title 2: Science Fair Experiment</h3>
             <p>For the annual science fair, I conducted an experiment on renewable energy sources. I created a model wind turbine and demonstrated how it could generate electricity, which sparked interest among my peers and teachers.</p>
+            <p><strong>Technologies Used:</strong> Renewable Energy Models, Presentation Skills</p>
         </div>
         <div class="project">
             <h3>Project Title 3: Website Development</h3>
             <p>I created a personal website using HTML, CSS, and JavaScript to showcase my projects and skills. This project taught me the basics of web development and design.</p>
+            <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript</p>
+        </div>
+        <div class="project">
+            <h3>Project Title 4: Mobile App Development</h3>
+            <p>Developed a simple mobile app that helps students track their homework assignments and deadlines. This project improved my understanding of mobile app frameworks.</p>
+            <p><strong>Technologies Used:</strong> React Native, JavaScript</p>
+        </div>
+        <div class="project">
+            <h3>Project Title 5: Community Service Website</h3>
+            <p>Created a website for a local charity to help them reach more volunteers. The site features event listings and volunteer sign-up forms.</p>
+            <p><strong>Technologies Used:</strong> WordPress, HTML, CSS</p>
         </div>
     </section>
 
     <section id="skills">
         <h2>My Skills</h2>
-        <ul>
-            <li>Programming Languages: Python, Java, HTML, CSS</li>
-            <li>Web Development: HTML, CSS, JavaScript</li>
-            <li>Robotics: Arduino, Raspberry Pi</li>
-            <li>Soft Skills: Teamwork, Leadership, Communication</li>
-        </ul>
+        <div class="skills-list">
+            <div class="skill">Programming Languages: Python, Java, C++</div>
+            <div class="skill">Web Development: HTML, CSS, JavaScript</div>
+            <div class="skill">Mobile Development: React Native</div>
+            <div class="skill">Robotics: Arduino Programming</div>
+            <div class="skill">Public Speaking: Debate Team Member</div>
+            <div class="skill">Team Collaboration: Group Projects</div>
+        </div>
     </section>
 
     <section id="hobbies">
         <h2>My Hobbies</h2>
-        <p>In my free time, I enjoy:</p>
-        <ul>
-            <li>Playing video games</li>
-            <li>Reading science fiction novels</li>
-            <li>Building model kits</li>
-            <li>Volunteering at local charities</li>
-        </ul>
+        <div class="hobbies-list">
+            <div class="hobby">Reading Tech Blogs</div>
+            <div class="hobby">Playing Chess</div>
+            <div class="hobby">Volunteering at Local Charities</div>
+            <div class="hobby">Photography</div>
+            <div class="hobby">Playing Video Games</div>
+            <div class="hobby">Exploring Nature</div>
+        </div>
     </section>
 
     <section id="contact">
         <h2>Contact Me</h2>
-        <p>If you'd like to get in touch, feel free to reach out via email:</p>
-        <p>Email: <a href="mailto:harry.ramesh@example.com">harry.ramesh@example.com</a></p>
+        <p>If you would like to get in touch, feel free to reach out via email or connect with me on social media!</p>
+        <p><strong>Email:</strong> harryramesh124@gmail.com</p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/harryramesh" target="_blank">linkedin.com/in/harryramesh</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/harryrameshcode" target="_blank">github.com/harryrameshcode</a></p>
     </section>
 
     <footer>
-        <p>&copy; 2024 Harry Ramesh. All rights reserved.</p>
+        <p>&copy; 2024 Harry Ramesh. All Rights Reserved.</p>
     </footer>
-
-    <script>
-        // Example JavaScript code (optional)
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log("Document loaded and ready!");
-        });
-    </script>
 </body>
 </html>
