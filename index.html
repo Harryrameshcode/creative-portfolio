@@ -29,6 +29,8 @@
             list-style-type: none;
             background-color: #333;
             overflow: hidden;
+            margin: 0;
+            padding: 0;
         }
 
         nav ul li {
@@ -110,6 +112,11 @@
         .math-content {
             margin-top: 2rem;
         }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/mathjs@11.8.2/dist/math.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -127,6 +134,7 @@
             <li><a href="#calculus">Calculus</a></li>
             <li><a href="#linear">Linear Algebra</a></li>
             <li><a href="#stats">Statistics</a></li>
+            <li><a href="#about">About</a></li>
         </ul>
     </nav>
 
@@ -173,6 +181,7 @@
             <select id="calculus-operation" name="operation">
                 <option value="derivative">Derivative</option>
                 <option value="integral">Integral</option>
+                <option value="limit">Limit</option>
             </select>
             
             <input type="submit" value="Calculate">
@@ -209,11 +218,18 @@
                 <option value="mean">Mean</option>
                 <option value="median">Median</option>
                 <option value="stddev">Standard Deviation</option>
+                <option value="regression">Regression</option>
             </select>
             
             <input type="submit" value="Calculate">
         </form>
         <div id="stats-result" class="result"></div>
+        <canvas id="stats-graph" class="graph"></canvas>
+    </section>
+
+    <section id="about">
+        <h2>About</h2>
+        <p>This platform provides advanced mathematical problem-solving capabilities including basic arithmetic, algebra, calculus, linear algebra, and statistics. It uses JavaScript libraries for computation and visualization.</p>
     </section>
 
     <footer>
@@ -221,7 +237,7 @@
     </footer>
 
     <script>
-        // Basic Arithmetic Calculation
+        // Function to handle arithmetic operations
         document.getElementById('arithmetic-form').addEventListener('submit', function(event) {
             event.preventDefault();
             const num1 = parseFloat(document.getElementById('arithmetic-number1').value);
@@ -237,26 +253,4 @@
                     result = num1 - num2;
                     break;
                 case 'multiply':
-                    result = num1 * num2;
-                    break;
-                case 'divide':
-                    result = num1 / num2;
-                    break;
-            }
-
-            document.getElementById('arithmetic-result').textContent = `Result: ${result}`;
-        });
-
-        // Algebra Solver
-        document.getElementById('algebra-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const equation = document.getElementById('algebra-equation').value;
-            try {
-                const result = math.simplify(equation).toString();
-                document.getElementById('algebra-result').textContent = `Simplified Equation: ${result}`;
-            } catch (error) {
-                document.getElementById('algebra-result').textContent = 'Error solving the equation.';
-            }
-        });
-
-        // Calculus Solver
+                    result = num
