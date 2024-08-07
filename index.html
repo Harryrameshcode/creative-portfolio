@@ -3,254 +3,628 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Math Help</title>
+    <title>Extended Advanced Math Website</title>
     <style>
-        /* Basic reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        nav ul {
-            list-style-type: none;
-            background-color: #333;
-            overflow: hidden;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav ul li {
-            float: left;
-        }
-
-        nav ul li a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        nav ul li a:hover {
-            background-color: #111;
-        }
-
-        section {
-            padding: 2rem;
-        }
-
-        form {
-            max-width: 600px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-
-        form input[type="number"],
-        form select,
-        form textarea {
-            width: 100%;
-            padding: 0.5rem;
-            margin: 0.5rem 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        form input[type="submit"] {
-            width: 100%;
-            padding: 0.75rem;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        form input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-
-        .result {
-            margin-top: 1rem;
-            padding: 1rem;
-            background-color: #e7f1e7;
-            border-radius: 4px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background-color: #333;
-            color: white;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-        .graph {
-            width: 100%;
-            height: 400px;
-            margin-top: 2rem;
-        }
-
-        .math-content {
-            margin-top: 2rem;
-        }
-
-        .error {
-            color: red;
-            font-weight: bold;
-        }
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f9f9f9; }
+        header { background-color: #4CAF50; color: white; padding: 10px; text-align: center; }
+        section { margin: 20px 0; padding: 15px; border-radius: 5px; background: white; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
+        .question { margin-bottom: 10px; }
+        .answer { background-color: #f1f1f1; padding: 10px; border-left: 5px solid #4CAF50; }
+        #ai-section { margin-top: 30px; }
+        #output { margin-top: 10px; }
+        .language-section { margin-top: 20px; }
+        .topic { margin-top: 20px; }
+        .topic h3 { cursor: pointer; }
+        .topic-content { display: none; padding: 10px; border: 1px solid #ccc; margin-top: 10px; }
+        footer { text-align: center; margin-top: 20px; }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/mathjs@11.8.2/dist/math.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.0.0/math.min.js"></script>
 </head>
 <body>
     <header>
-        <h1>Advanced Math Help</h1>
-        <p>Your comprehensive solution for complex math problems!</p>
+        <h1>Welcome to the Extended Advanced Math Website</h1>
+        <p>Ask any math question and get detailed answers!</p>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#basic">Basic Arithmetic</a></li>
-            <li><a href="#algebra">Algebra</a></li>
-            <li><a href="#calculus">Calculus</a></li>
-            <li><a href="#linear">Linear Algebra</a></li>
-            <li><a href="#stats">Statistics</a></li>
-            <li><a href="#about">About</a></li>
-        </ul>
-    </nav>
-
-    <section id="basic">
-        <h2>Basic Arithmetic</h2>
-        <form id="arithmetic-form">
-            <label for="arithmetic-operation">Operation:</label>
-            <select id="arithmetic-operation" name="operation">
-                <option value="add">Add</option>
-                <option value="subtract">Subtract</option>
-                <option value="multiply">Multiply</option>
-                <option value="divide">Divide</option>
-            </select>
-            
-            <label for="arithmetic-number1">First Number:</label>
-            <input type="number" id="arithmetic-number1" name="number1" required>
-            
-            <label for="arithmetic-number2">Second Number:</label>
-            <input type="number" id="arithmetic-number2" name="number2" required>
-            
-            <input type="submit" value="Calculate">
-        </form>
-        <div id="arithmetic-result" class="result"></div>
+    <section>
+        <h2>Ask a Math Question</h2>
+        <div class="question">
+            <input type="text" id="questionInput" placeholder="Type your math question here..." />
+            <button onclick="getAnswer()">Submit</button>
+        </div>
+        <div id="output" class="answer"></div>
     </section>
 
-    <section id="algebra">
-        <h2>Algebra</h2>
-        <form id="algebra-form">
-            <label for="algebra-equation">Equation:</label>
-            <textarea id="algebra-equation" name="equation" rows="4" placeholder="e.g., x^2 - 4 = 0" required></textarea>
-            
-            <input type="submit" value="Solve">
-        </form>
-        <div id="algebra-result" class="result"></div>
+    <section id="ai-section">
+        <h2>AI Math Assistant</h2>
+        <textarea id="aiInput" placeholder="Type your question for the AI..." rows="4" cols="50"></textarea>
+        <button onclick="getAIResponse()">Ask AI</button>
+        <div id="aiOutput" class="answer"></div>
     </section>
 
-    <section id="calculus">
-        <h2>Calculus</h2>
-        <form id="calculus-form">
-            <label for="calculus-function">Function:</label>
-            <textarea id="calculus-function" name="function" rows="4" placeholder="e.g., x^2 + 3*x + 2" required></textarea>
-            
-            <label for="calculus-operation">Operation:</label>
-            <select id="calculus-operation" name="operation">
-                <option value="derivative">Derivative</option>
-                <option value="integral">Integral</option>
-                <option value="limit">Limit</option>
-            </select>
-            
-            <input type="submit" value="Calculate">
-        </form>
-        <div id="calculus-result" class="result"></div>
-        <canvas id="calculus-graph" class="graph"></canvas>
-    </section>
+    <section class="language-section">
+        <h2>Programming Language Examples</h2>
+        <div>
+            <h3>Python</h3>
+            <pre><code>def add(a, b):
+  return a + b
 
-    <section id="linear">
-        <h2>Linear Algebra</h2>
-        <form id="linear-form">
-            <label for="linear-matrix">Matrix (comma-separated rows):</label>
-            <textarea id="linear-matrix" name="matrix" rows="4" placeholder="e.g., 1,2; 3,4" required></textarea>
-            
-            <label for="linear-operation">Operation:</label>
-            <select id="linear-operation" name="operation">
-                <option value="determinant">Determinant</option>
-                <option value="eigenvalues">Eigenvalues</option>
-            </select>
-            
-            <input type="submit" value="Calculate">
-        </form>
-        <div id="linear-result" class="result"></div>
-    </section>
+def subtract(a, b):
+  return a - b
 
-    <section id="stats">
-        <h2>Statistics</h2>
-        <form id="stats-form">
-            <label for="stats-data">Data (comma-separated):</label>
-            <textarea id="stats-data" name="data" rows="4" placeholder="e.g., 1,2,3,4,5" required></textarea>
-            
-            <label for="stats-operation">Operation:</label>
-            <select id="stats-operation" name="operation">
-                <option value="mean">Mean</option>
-                <option value="median">Median</option>
-                <option value="stddev">Standard Deviation</option>
-                <option value="regression">Regression</option>
-            </select>
-            
-            <input type="submit" value="Calculate">
-        </form>
-        <div id="stats-result" class="result"></div>
-        <canvas id="stats-graph" class="graph"></canvas>
-    </section>
+def multiply(a, b):
+  return a * b
 
-    <section id="about">
-        <h2>About</h2>
-        <p>This platform provides advanced mathematical problem-solving capabilities including basic arithmetic, algebra, calculus, linear algebra, and statistics. It uses JavaScript libraries for computation and visualization.</p>
-    </section>
+def divide(a, b):
+  if b != 0:
+      return a / b
+  else:
+      return "Cannot divide by zero."
 
-    <footer>
-        <p>&copy; 2024 Advanced Math Help. All rights reserved.</p>
-    </footer>
+def power(base, exp):
+  return base ** exp
 
-    <script>
-        // Function to handle arithmetic operations
-        document.getElementById('arithmetic-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const num1 = parseFloat(document.getElementById('arithmetic-number1').value);
-            const num2 = parseFloat(document.getElementById('arithmetic-number2').value);
-            const operation = document.getElementById('arithmetic-operation').value;
-            let result;
+def factorial(n):
+  if n == 0:
+      return 1
+  else:
+      return n * factorial(n - 1)
 
-            switch(operation) {
-                case 'add':
-                    result = num1 + num2;
-                    break;
-                case 'subtract':
-                    result = num1 - num2;
-                    break;
-                case 'multiply':
-                    result = num
+def fibonacci(n):
+  if n <= 0:
+      return 0
+  elif n == 1:
+      return 1
+  else:
+      return fibonacci(n - 1) + fibonacci(n - 2)
+
+def prime_check(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+def lcm(a, b):
+    return abs(a * b) // gcd(a, b)</code></pre>
+        </div>
+        <div>
+            <h3>JavaScript</h3>
+            <pre><code>function add(a, b) {
+  return a + b;
+}
+
+function subtract(a, b) {
+  return a - b;
+}
+
+function multiply(a, b) {
+  return a * b;
+}
+
+function divide(a, b) {
+  if (b !== 0) {
+      return a / b;
+  } else {
+      return "Cannot divide by zero.";
+  }
+}
+
+function power(base, exp) {
+  return Math.pow(base, exp);
+}
+
+function factorial(n) {
+  if (n === 0) {
+      return 1;
+  } else {
+      return n * factorial(n - 1);
+  }
+}
+
+function fibonacci(n) {
+  if (n <= 0) return 0;
+  if (n === 1) return 1;
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+function primeCheck(n) {
+    if (n <= 1) return false;
+    for (let i = 2; i <= Math.sqrt(n); i++) {
+        if (n % i === 0) return false;
+    }
+    return true;
+}
+
+function gcd(a, b) {
+    while (b) {
+        let temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+function lcm(a, b) {
+    return Math.abs(a * b) / gcd(a, b);
+}</code></pre>
+        </div>
+        <div>
+            <h3>Java</h3>
+            <pre><code>public class MathOperations {
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    public int subtract(int a, int b) {
+        return a - b;
+    }
+
+    public int multiply(int a, int b) {
+        return a * b;
+    }
+
+    public double divide(int a, int b) {
+        if (b != 0) {
+            return (double) a / b;
+        } else {
+            throw new IllegalArgumentException("Cannot divide by zero.");
+        }
+    }
+
+    public double power(double base, int exp) {
+        return Math.pow(base, exp);
+    }
+
+    public int factorial(int n) {
+        if (n == 0) {
+            return 1;
+        } else {
+            return n * factorial(n - 1);
+        }
+    }
+
+    public int fibonacci(int n) {
+        if (n <= 0) return 0;
+        if (n == 1) return 1;
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+
+    public boolean primeCheck(int n) {
+        if (n <= 1) return false;
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+
+    public int gcd(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    public int lcm(int a, int b) {
+        return Math.abs(a * b) / gcd(a, b);
+    }
+}</code></pre>
+        </div>
+        <div>
+            <h3>C++</h3>
+            <pre><code>#include &lt;iostream&gt;
+
+class MathOperations {
+public:
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    int subtract(int a, int b) {
+        return a - b;
+    }
+
+    int multiply(int a, int b) {
+        return a * b;
+    }
+
+    double divide(int a, int b) {
+        if (b != 0) {
+            return (double)a / b;
+        } else {
+            throw std::invalid_argument("Cannot divide by zero.");
+        }
+    }
+
+    double power(double base, int exp) {
+        return pow(base, exp);
+    }
+
+    int factorial(int n) {
+        if (n == 0) {
+            return 1;
+        } else {
+            return n * factorial(n - 1);
+        }
+    }
+
+    int fibonacci(int n) {
+        if (n <= 0) return 0;
+        if (n == 1) return 1;
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+
+    bool primeCheck(int n) {
+        if (n <= 1) return false;
+        for (int i = 2; i <= sqrt(n); i++) {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+
+    int gcd(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    int lcm(int a, int b) {
+        return abs(a * b) / gcd(a, b);
+    }
+};</code></pre>
+        </div>
+        <div>
+            <h3>C#</h3>
+            <pre><code>public class MathOperations {
+    public int Add(int a, int b) {
+        return a + b;
+    }
+
+    public int Subtract(int a, int b) {
+        return a - b;
+    }
+
+    public int Multiply(int a, int b) {
+        return a * b;
+    }
+
+    public double Divide(int a, int b) {
+        if (b != 0) {
+            return (double)a / b;
+        } else {
+            throw new ArgumentException("Cannot divide by zero.");
+        }
+    }
+
+    public double Power(double base, int exp) {
+        return Math.Pow(base, exp);
+    }
+
+    public int Factorial(int n) {
+        if (n == 0) {
+            return 1;
+        } else {
+            return n * Factorial(n - 1);
+        }
+    }
+
+    public int Fibonacci(int n) {
+        if (n <= 0) return 0;
+        if (n == 1) return 1;
+        return Fibonacci(n - 1) + Fibonacci(n - 2);
+    }
+
+    public bool PrimeCheck(int n) {
+        if (n <= 1) return false;
+        for (int i = 2; i <= Math.Sqrt(n); i++) {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+
+    public int Gcd(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    public int Lcm(int a, int b) {
+        return Math.Abs(a * b) / Gcd(a, b);
+    }
+}</code></pre>
+        </div>
+        <div>
+            <h3>Ruby</h3>
+            <pre><code>def add(a, b)
+  a + b
+end
+
+def subtract(a, b)
+  a - b
+end
+
+def multiply(a, b)
+  a * b
+end
+
+def divide(a, b)
+  return "Cannot divide by zero." if b == 0
+  a / b
+end
+
+def power(base, exp)
+  base ** exp
+end
+
+def factorial(n)
+  return 1 if n == 0
+  n * factorial(n - 1)
+end
+
+def fibonacci(n)
+  return 0 if n <= 0
+  return 1 if n == 1
+  fibonacci(n - 1) + fibonacci(n - 2)
+end
+
+def prime_check(n)
+  return false if n <= 1
+  (2..Math.sqrt(n)).none? { |i| n % i == 0 }
+end
+
+def gcd(a, b)
+  while b != 0
+    a, b = b, a % b
+  end
+  a
+end
+
+def lcm(a, b)
+  (a * b).abs / gcd(a, b)
+end</code></pre>
+        </div>
+        <div>
+            <h3>PHP</h3>
+            <pre><code>function add($a, $b) {
+  return $a + $b;
+}
+
+function subtract($a, $b) {
+  return $a - $b;
+}
+
+function multiply($a, $b) {
+  return $a * $b;
+}
+
+function divide($a, $b) {
+  if ($b != 0) {
+      return $a / $b;
+  } else {
+      return "Cannot divide by zero.";
+  }
+}
+
+function power($base, $exp) {
+  return pow($base, $exp);
+}
+
+function factorial($n) {
+  if ($n == 0) {
+      return 1;
+  } else {
+      return $n * factorial($n - 1);
+  }
+}
+
+function fibonacci($n) {
+  if ($n <= 0) return 0;
+  if ($n == 1) return 1;
+  return fibonacci($n - 1) + fibonacci($n - 2);
+}
+
+function prime_check($n) {
+  if ($n <= 1) return false;
+  for ($i = 2; $i <= sqrt($n); $i++) {
+      if ($n % $i == 0) return false;
+  }
+  return true;
+}
+
+function gcd($a, $b) {
+  while ($b != 0) {
+    $temp = $b;
+    $b = $a % $b;
+    $a = $temp;
+  }
+  return $a;
+}
+
+function lcm($a, $b) {
+  return abs($a * $b) / gcd($a, $b);
+}</code></pre>
+        </div>
+        <div>
+            <h3>Swift</h3>
+            <pre><code>func add(a: Int, b: Int) -> Int {
+  return a + b
+}
+
+func subtract(a: Int, b: Int) -> Int {
+  return a - b
+}
+
+func multiply(a: Int, b: Int) -> Int {
+  return a * b
+}
+
+func divide(a: Int, b: Int) -> String {
+  if b != 0 {
+      return String(Double(a) / Double(b))
+  } else {
+      return "Cannot divide by zero."
+  }
+}
+
+func power(base: Double, exp: Int) -> Double {
+  return pow(base, Double(exp))
+}
+
+func factorial(n: Int) -> Int {
+  if n == 0 {
+      return 1
+  } else {
+      return n * factorial(n: n - 1)
+  }
+}
+
+func fibonacci(n: Int) -> Int {
+  if n <= 0 { return 0 }
+  if n == 1 { return 1 }
+  return fibonacci(n: n - 1) + fibonacci(n: n - 2)
+}
+
+func primeCheck(n: Int) -> Bool {
+  if n <= 1 { return false }
+  for i in 2...Int(sqrt(Double(n))) {
+      if n % i == 0 { return false }
+  }
+  return true
+}
+
+func gcd(a: Int, b: Int) -> Int {
+  var a = a
+  var b = b
+  while b != 0 {
+      let temp = b
+      b = a % b
+      a = temp
+  }
+  return a
+}
+
+func lcm(a: Int, b: Int) -> Int {
+  return abs(a * b) / gcd(a: a, b: b)
+}</code></pre>
+        </div>
+        <div>
+            <h3>Go</h3>
+            <pre><code>func add(a int, b int) int {
+  return a + b
+}
+
+func subtract(a int, b int) int {
+  return a - b
+}
+
+func multiply(a int, b int) int {
+  return a * b
+}
+
+func divide(a int, b int) string {
+  if b != 0 {
+      return fmt.Sprintf("%f", float64(a)/float64(b))
+  } else {
+      return "Cannot divide by zero."
+  }
+}
+
+func power(base float64, exp int) float64 {
+  return math.Pow(base, float64(exp))
+}
+
+func factorial(n int) int {
+  if n == 0 {
+      return 1
+  } else {
+      return n * factorial(n - 1)
+  }
+}
+
+func fibonacci(n int) int {
+  if n <= 0 {
+      return 0
+  } else if n == 1 {
+      return 1
+  }
+  return fibonacci(n - 1) + fibonacci(n - 2)
+}
+
+func primeCheck(n int) bool {
+  if n <= 1 {
+      return false
+  }
+  for i := 2; i <= int(math.Sqrt(float64(n))); i++ {
+      if n % i == 0 {
+          return false
+      }
+  }
+  return true
+}
+
+func gcd(a int, b int) int {
+  for b != 0 {
+      a, b = b, a % b
+  }
+  return a
+}
+
+func lcm(a int, b int) int {
+  return int(math.Abs(float64(a * b))) / gcd(a, b)
+}</code></pre>
+        </div>
+        <div>
+            <h3>Kotlin</h3>
+            <pre><code>fun add(a: Int, b: Int): Int {
+  return a + b
+}
+
+fun subtract(a: Int, b: Int): Int {
+  return a - b
+}
+
+fun multiply(a: Int, b: Int): Int {
+  return a * b
+}
+
+fun divide(a: Int, b: Int): String {
+  return if (b != 0) {
+      (a.toDouble() / b).toString()
+  } else {
+      "Cannot divide by zero."
+  }
+}
+
+fun power(base: Double, exp: Int): Double {
+  return Math.pow(base, exp.toDouble())
+}
+
+fun factorial(n: Int): Int {
+  return if (n == 0) 1 else n * factorial(n - 1)
+}
+
+fun fibonacci(n: Int): Int {
+  return when {
+      n <= 0 -> 0
+      n == 1 -> 1
+      else -> fibonacci(n - 1) + fibonacci(n - 2)
+  }
+}
+
+fun primeCheck(n: Int): Boolean {
+  if (n <= 1) return false
+  for (i in 2..Math.sqrt(n.toDouble()).to
