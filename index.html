@@ -3,285 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harry Ramesh's Creative Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Math Help</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
+        /* Basic reset */
+        * {
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             color: #333;
         }
+
         header {
-            background: linear-gradient(90deg, #4CAF50, #2E7D32);
-            color: #fff;
-            padding: 20px 0;
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
+
         nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+            list-style-type: none;
+            background-color: #333;
+            overflow: hidden;
         }
+
         nav ul li {
-            display: inline;
-            margin: 0 15px;
+            float: left;
         }
+
         nav ul li a {
-            color: #fff;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
             text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
         }
+
         nav ul li a:hover {
-            color: #FFD700;
+            background-color: #111;
         }
+
         section {
-            padding: 20px;
-            margin: 10px;
-            background: #fff;
-            border-radius: 5px;
+            padding: 2rem;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        h2 {
-            color: #4CAF50;
-            margin-bottom: 10px;
-            border-bottom: 2px solid #4CAF50;
-            padding-bottom: 5px;
-        }
-        .project, .shared-project {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            transition: 0.3s;
-            background: #f9f9f9;
-        }
-        .project:hover, .shared-project:hover {
-            box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
-            transform: translateY(-2px);
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #4CAF50;
-            color: #fff;
-            position: relative;
-            bottom: 0;
+
+        form input[type="number"],
+        form select {
             width: 100%;
-            margin-top: 20px;
-        }
-        .skills-list, .hobbies-list, .shared-projects {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-        .skill, .hobby {
-            background: #f4f4f4;
-            border-radius: 5px;
-            padding: 10px;
-            margin: 5px;
-            flex: 1 1 30%;
-            text-align: center;
-            transition: background 0.3s;
-        }
-        .skill:hover, .hobby:hover {
-            background: #eaeaea;
-        }
-        .form-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 20px 0;
-        }
-        .form-container input, .form-container textarea {
-            width: 80%;
-            padding: 10px;
-            margin: 5px 0;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
             border: 1px solid #ccc;
-            border-radius: 5px;
-            transition: border 0.3s;
+            border-radius: 4px;
         }
-        .form-container input:focus, .form-container textarea:focus {
-            border-color: #4CAF50;
-            outline: none;
-        }
-        .form-container button {
-            background: #4CAF50;
+
+        form input[type="submit"] {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #4CAF50;
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
-            transition: background 0.3s;
         }
-        .form-container button:hover {
-            background: #45a049;
+
+        form input[type="submit"]:hover {
+            background-color: #45a049;
         }
-        .project-title {
-            font-weight: bold;
-            font-size: 1.2em;
-        }
-        .project-description {
-            margin: 5px 0;
-        }
-        .project-tech {
-            font-style: italic;
-            color: #777;
-        }
-        @media (max-width: 600px) {
-            nav ul li {
-                display: block;
-                margin: 5px 0;
-            }
-            .skills-list, .hobbies-list, .shared-projects {
-                flex-direction: column;
-                align-items: center;
-            }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Harry Ramesh's Creative Portfolio</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#hobbies">Hobbies</a></li>
-                <li><a href="#share-project">Share Your Project</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>My name is Harry Ramesh, and I am a 15-year-old student at St. Francis Catholic College. I have a passion for learning and exploring new ideas. At school, I enjoy subjects like science and mathematics, and I am actively involved in various extracurricular activities, including the robotics club and the debate team. I believe in the importance of community service and often volunteer at local charities. My goal is to pursue a career in technology, where I can combine my love for innovation with my desire to make a positive impact in the world.</p>
-        <p>In my spare time, I love reading about new technology trends, coding, and working on personal projects that challenge my skills and creativity. I am always eager to learn new things and improve myself.</p>
-    </section>
+<header>
+    <h1>Math Help</h1>
+    <p>Your one-stop solution for math problems!</p>
+</header>
 
-    <section id="projects">
-        <h2>My Projects</h2>
-        <div class="project">
-            <h3 class="project-title">Robotics Club Project</h3>
-            <p class="project-description">This project involved designing and building a robot that can navigate through a maze. I worked with my team to program the robot using Arduino and learned valuable skills in coding and teamwork.</p>
-            <p class="project-tech"><strong>Technologies Used:</strong> Arduino, C++, Team Collaboration</p>
-        </div>
-        <div class="project">
-            <h3 class="project-title">Science Fair Experiment</h3>
-            <p class="project-description">For the annual science fair, I conducted an experiment on renewable energy sources. I created a model wind turbine and demonstrated how it could generate electricity, which sparked interest among my peers and teachers.</p>
-            <p class="project-tech"><strong>Technologies Used:</strong> Renewable Energy Models, Presentation Skills</p>
-        </div>
-        <div class="project">
-            <h3 class="project-title">Website Development</h3>
-            <p class="project-description">I created a personal website using HTML, CSS, and JavaScript to showcase my projects and skills. This project taught me the basics of web development and design.</p>
-            <p class="project-tech"><strong>Technologies Used:</strong> HTML, CSS, JavaScript</p>
-        </div>
-        <div class="project">
-            <h3 class="project-title">Mobile App Development</h3>
-            <p class="project-description">Developed a simple mobile app that helps students track their homework assignments and deadlines. This project improved my understanding of mobile app frameworks.</p>
-            <p class="project-tech"><strong>Technologies Used:</strong> React Native, JavaScript</p>
-        </div>
-        <div class="project">
-            <h3 class="project-title">Community Service Website</h3>
-            <p class="project-description">Created a website for a local charity to help them reach more volunteers. The site features event listings and volunteer sign-up forms.</p>
-            <p class="project-tech"><strong>Technologies Used:</strong> WordPress, HTML, CSS</p>
-        </div>
-        <div class="project">
-            <h3 class="project-title">Personal Finance Tracker</h3>
-            <p class="project-description">Built a web application to help users track their expenses and savings. This project enhanced my skills in JavaScript and data management.</p>
-            <p class="project-tech"><strong>Technologies Used:</strong> JavaScript, HTML, CSS</p>
-        </div>
-        <div class="project">
-            <h3 class="project-title">Interactive Quiz App</h3>
-            <p class="project-description">Developed an interactive quiz application that allows users to test their knowledge on various subjects. This project improved my skills in user interface design.</p>
-            <p class="project-tech"><strong>Technologies Used:</strong> React, CSS</p>
-        </div>
-    </section>
+<nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/solve">Solve Problems</a></li>
+        <li><a href="/history">Calculation History</a></li>
+    </ul>
+</nav>
 
-    <section id="skills">
-        <h2>My Skills</h2>
-        <div class="skills-list">
-            <div class="skill">Programming Languages: Python, Java, C++</div>
-            <div class="skill">Web Development: HTML, CSS, JavaScript</div>
-            <div class="skill">Mobile Development: React Native</div>
-            <div class="skill">Robotics: Arduino Programming</div>
-            <div class="skill">Public Speaking: Debate Team Member</div>
-            <div class="skill">Team Collaboration: Group Projects</div>
-            <div class="skill">Graphic Design: Adobe Photoshop</div>
-            <div class="skill">Data Analysis: Excel, Python</div>
-            <div class="skill">Social Media Management: Content Creation</div>
-            <div class="skill">Game Development: Unity</div>
-            <div class="skill">Machine Learning: Basic Concepts</div>
-        </div>
-    </section>
+<section id="welcome">
+    <h2>Welcome to Math Help!</h2>
+    <p>Here, you can solve basic math problems and view your calculation history.</p>
+</section>
 
-    <section id="hobbies">
-        <h2>My Hobbies</h2>
-        <div class="hobbies-list">
-            <div class="hobby">Reading Tech Blogs</div>
-            <div class="hobby">Playing Chess</div>
-            <div class="hobby">Volunteering at Local Charities</div>
-            <div class="hobby">Photography</div>
-            <div class="hobby">Playing Video Games</div>
-            <div class="hobby">Exploring Nature</div>
-            <div class="hobby">Cooking New Recipes</div>
-            <div class="hobby">Learning New Languages</div>
-            <div class="hobby">Listening to Podcasts</div>
-            <div class="hobby">Traveling to New Places</div>
-            <div class="hobby">Writing Short Stories</div>
-        </div>
-    </section>
+<section id="solve">
+    <h2>Solve a Math Problem</h2>
+    <form action="/solve" method="POST">
+        <label for="number1">First Number:</label>
+        <input type="number" id="number1" name="number1" required>
+        
+        <label for="operation">Operation:</label>
+        <select id="operation" name="operation" required>
+            <option value="add">Add</option>
+            <option value="subtract">Subtract</option>
+            <option value="multiply">Multiply</option>
+            <option value="divide">Divide</option>
+        </select>
+        
+        <label for="number2">Second Number:</label>
+        <input type="number" id="number2" name="number2" required>
+        
+        <input type="submit" value="Calculate">
+    </form>
 
-    <section id="share-project">
-        <h2>Share Your Project</h2>
-        <div class="form-container">
-            <input type="text" id="projectTitle" placeholder="Project Title" required>
-            <textarea id="projectDescription" placeholder="Project Description" rows="5" required></textarea>
-            <input type="text" id="projectTech" placeholder="Technologies Used" required>
-            <button onclick="shareProject()">Share Project</button>
-        </div>
-        <h3>Shared Projects</h3>
-        <div id="sharedProjects" class="shared-projects"></div>
-    </section>
+    <div id="result">
+        {% if result %}
+            <h3>Result: {{ result }}</h3>
+        {% endif %}
+    </div>
+</section>
 
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <p>If you would like to get in touch, feel free to reach out via email or connect with me on social media!</p>
-        <p><strong>Email:</strong> harry.ramesh@example.com</p>
-        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/harryramesh" target="_blank">linkedin.com/in/harryramesh</a></p>
-        <p><strong>GitHub:</strong> <a href="https://github.com/harryrameshcode" target="_blank">github.com/harryrameshcode</a></p>
-    </section>
+<section id="history">
+    <h2>Calculation History</h2>
+    <ul>
+        {% for item in history %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+</section>
 
-    <footer>
-        <p>&copy; 2024 Harry Ramesh. All Rights Reserved.</p>
-    </footer>
+<footer>
+    <p>&copy; 2024 Math Help. All rights reserved.</p>
+</footer>
 
-    <script>
-        function shareProject() {
-            const title = document.getElementById('projectTitle').value;
-            const description = document.getElementById('projectDescription').value;
-            const technologies = document.getElementById('projectTech').value;
-            
-            if (title && description && technologies) {
-                const projectContainer = document.createElement('div');
-                projectContainer.classList.add('shared-project');
-                projectContainer.innerHTML = `<h4 class="project-title">${title}</h4><p class="project-description">${description}</p><p class="project-tech"><strong>Technologies Used:</strong> ${technologies}</p>`;
-                document.getElementById('sharedProjects').appendChild(projectContainer);
-                
-                // Clear input fields
-                document.getElementById('projectTitle').value = '';
-                document.getElementById('projectDescription').value = '';
-                document.getElementById('projectTech').value = '';
-            } else {
-                alert('Please fill in all fields.');
-            }
-        }
-    </script>
+<script>
+    // Optional: Add any JavaScript interactivity here
+    console.log("Math Help website loaded!");
+
+    // Example of a simple interactive feature
+    const operationSelect = document.getElementById('operation');
+    operationSelect.addEventListener('change', function() {
+        alert('You selected ' + this.value + ' operation!');
+    });
+</script>
+
 </body>
 </html>
