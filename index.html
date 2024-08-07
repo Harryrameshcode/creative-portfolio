@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Help</title>
+    <title>Advanced Math Help</title>
     <style>
         /* Basic reset */
         * {
@@ -52,7 +52,7 @@
         }
 
         form {
-            max-width: 400px;
+            max-width: 600px;
             margin: 2rem auto;
             padding: 2rem;
             background-color: white;
@@ -61,7 +61,8 @@
         }
 
         form input[type="number"],
-        form select {
+        form select,
+        form textarea {
             width: 100%;
             padding: 0.5rem;
             margin: 0.5rem 0;
@@ -83,6 +84,13 @@
             background-color: #45a049;
         }
 
+        .result {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #e7f1e7;
+            border-radius: 4px;
+        }
+
         footer {
             text-align: center;
             padding: 1rem;
@@ -92,78 +100,163 @@
             bottom: 0;
             width: 100%;
         }
+
+        .graph {
+            width: 100%;
+            height: 400px;
+            margin-top: 2rem;
+        }
+
+        .math-content {
+            margin-top: 2rem;
+        }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/mathjs@11.8.2/dist/math.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <header>
+        <h1>Advanced Math Help</h1>
+        <p>Your comprehensive solution for complex math problems!</p>
+    </header>
 
-<header>
-    <h1>Math Help</h1>
-    <p>Your one-stop solution for math problems!</p>
-</header>
+    <nav>
+        <ul>
+            <li><a href="#basic">Basic Arithmetic</a></li>
+            <li><a href="#algebra">Algebra</a></li>
+            <li><a href="#calculus">Calculus</a></li>
+            <li><a href="#linear">Linear Algebra</a></li>
+            <li><a href="#stats">Statistics</a></li>
+        </ul>
+    </nav>
 
-<nav>
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/solve">Solve Problems</a></li>
-        <li><a href="/history">Calculation History</a></li>
-    </ul>
-</nav>
+    <section id="basic">
+        <h2>Basic Arithmetic</h2>
+        <form id="arithmetic-form">
+            <label for="arithmetic-operation">Operation:</label>
+            <select id="arithmetic-operation" name="operation">
+                <option value="add">Add</option>
+                <option value="subtract">Subtract</option>
+                <option value="multiply">Multiply</option>
+                <option value="divide">Divide</option>
+            </select>
+            
+            <label for="arithmetic-number1">First Number:</label>
+            <input type="number" id="arithmetic-number1" name="number1" required>
+            
+            <label for="arithmetic-number2">Second Number:</label>
+            <input type="number" id="arithmetic-number2" name="number2" required>
+            
+            <input type="submit" value="Calculate">
+        </form>
+        <div id="arithmetic-result" class="result"></div>
+    </section>
 
-<section id="welcome">
-    <h2>Welcome to Math Help!</h2>
-    <p>Here, you can solve basic math problems and view your calculation history.</p>
-</section>
+    <section id="algebra">
+        <h2>Algebra</h2>
+        <form id="algebra-form">
+            <label for="algebra-equation">Equation:</label>
+            <textarea id="algebra-equation" name="equation" rows="4" placeholder="e.g., x^2 - 4 = 0" required></textarea>
+            
+            <input type="submit" value="Solve">
+        </form>
+        <div id="algebra-result" class="result"></div>
+    </section>
 
-<section id="solve">
-    <h2>Solve a Math Problem</h2>
-    <form action="/solve" method="POST">
-        <label for="number1">First Number:</label>
-        <input type="number" id="number1" name="number1" required>
-        
-        <label for="operation">Operation:</label>
-        <select id="operation" name="operation" required>
-            <option value="add">Add</option>
-            <option value="subtract">Subtract</option>
-            <option value="multiply">Multiply</option>
-            <option value="divide">Divide</option>
-        </select>
-        
-        <label for="number2">Second Number:</label>
-        <input type="number" id="number2" name="number2" required>
-        
-        <input type="submit" value="Calculate">
-    </form>
+    <section id="calculus">
+        <h2>Calculus</h2>
+        <form id="calculus-form">
+            <label for="calculus-function">Function:</label>
+            <textarea id="calculus-function" name="function" rows="4" placeholder="e.g., x^2 + 3*x + 2" required></textarea>
+            
+            <label for="calculus-operation">Operation:</label>
+            <select id="calculus-operation" name="operation">
+                <option value="derivative">Derivative</option>
+                <option value="integral">Integral</option>
+            </select>
+            
+            <input type="submit" value="Calculate">
+        </form>
+        <div id="calculus-result" class="result"></div>
+        <canvas id="calculus-graph" class="graph"></canvas>
+    </section>
 
-    <div id="result">
-        {% if result %}
-            <h3>Result: {{ result }}</h3>
-        {% endif %}
-    </div>
-</section>
+    <section id="linear">
+        <h2>Linear Algebra</h2>
+        <form id="linear-form">
+            <label for="linear-matrix">Matrix (comma-separated rows):</label>
+            <textarea id="linear-matrix" name="matrix" rows="4" placeholder="e.g., 1,2; 3,4" required></textarea>
+            
+            <label for="linear-operation">Operation:</label>
+            <select id="linear-operation" name="operation">
+                <option value="determinant">Determinant</option>
+                <option value="eigenvalues">Eigenvalues</option>
+            </select>
+            
+            <input type="submit" value="Calculate">
+        </form>
+        <div id="linear-result" class="result"></div>
+    </section>
 
-<section id="history">
-    <h2>Calculation History</h2>
-    <ul>
-        {% for item in history %}
-            <li>{{ item }}</li>
-        {% endfor %}
-    </ul>
-</section>
+    <section id="stats">
+        <h2>Statistics</h2>
+        <form id="stats-form">
+            <label for="stats-data">Data (comma-separated):</label>
+            <textarea id="stats-data" name="data" rows="4" placeholder="e.g., 1,2,3,4,5" required></textarea>
+            
+            <label for="stats-operation">Operation:</label>
+            <select id="stats-operation" name="operation">
+                <option value="mean">Mean</option>
+                <option value="median">Median</option>
+                <option value="stddev">Standard Deviation</option>
+            </select>
+            
+            <input type="submit" value="Calculate">
+        </form>
+        <div id="stats-result" class="result"></div>
+    </section>
 
-<footer>
-    <p>&copy; 2024 Math Help. All rights reserved.</p>
-</footer>
+    <footer>
+        <p>&copy; 2024 Advanced Math Help. All rights reserved.</p>
+    </footer>
 
-<script>
-    // Optional: Add any JavaScript interactivity here
-    console.log("Math Help website loaded!");
+    <script>
+        // Basic Arithmetic Calculation
+        document.getElementById('arithmetic-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const num1 = parseFloat(document.getElementById('arithmetic-number1').value);
+            const num2 = parseFloat(document.getElementById('arithmetic-number2').value);
+            const operation = document.getElementById('arithmetic-operation').value;
+            let result;
 
-    // Example of a simple interactive feature
-    const operationSelect = document.getElementById('operation');
-    operationSelect.addEventListener('change', function() {
-        alert('You selected ' + this.value + ' operation!');
-    });
-</script>
+            switch(operation) {
+                case 'add':
+                    result = num1 + num2;
+                    break;
+                case 'subtract':
+                    result = num1 - num2;
+                    break;
+                case 'multiply':
+                    result = num1 * num2;
+                    break;
+                case 'divide':
+                    result = num1 / num2;
+                    break;
+            }
 
-</body>
-</html>
+            document.getElementById('arithmetic-result').textContent = `Result: ${result}`;
+        });
+
+        // Algebra Solver
+        document.getElementById('algebra-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const equation = document.getElementById('algebra-equation').value;
+            try {
+                const result = math.simplify(equation).toString();
+                document.getElementById('algebra-result').textContent = `Simplified Equation: ${result}`;
+            } catch (error) {
+                document.getElementById('algebra-result').textContent = 'Error solving the equation.';
+            }
+        });
+
+        // Calculus Solver
