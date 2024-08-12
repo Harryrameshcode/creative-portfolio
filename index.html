@@ -3,628 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Extended Advanced Math Website</title>
+    <title>Mithai & Chai Tees</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f9f9f9; }
-        header { background-color: #4CAF50; color: white; padding: 10px; text-align: center; }
-        section { margin: 20px 0; padding: 15px; border-radius: 5px; background: white; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
-        .question { margin-bottom: 10px; }
-        .answer { background-color: #f1f1f1; padding: 10px; border-left: 5px solid #4CAF50; }
-        #ai-section { margin-top: 30px; }
-        #output { margin-top: 10px; }
-        .language-section { margin-top: 20px; }
-        .topic { margin-top: 20px; }
-        .topic h3 { cursor: pointer; }
-        .topic-content { display: none; padding: 10px; border: 1px solid #ccc; margin-top: 10px; }
-        footer { text-align: center; margin-top: 20px; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #f8b400;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product {
+            display: inline-block;
+            margin: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 250px;
+            vertical-align: top;
+            text-align: left;
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+
+        .product h3 {
+            margin: 10px;
+        }
+
+        .product p {
+            margin: 0 10px 10px;
+            color: #555;
+        }
+
+        button {
+            background-color: #f8b400;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e89e00;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .contact-form button {
+            width: 100%;
+            background-color: #f8b400;
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #e89e00;
+        }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.0.0/math.min.js"></script>
 </head>
 <body>
     <header>
-        <h1>Welcome to the Extended Advanced Math Website</h1>
-        <p>Ask any math question and get detailed answers!</p>
+        <h1>Mithai & Chai Tees</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section>
-        <h2>Ask a Math Question</h2>
-        <div class="question">
-            <input type="text" id="questionInput" placeholder="Type your math question here..." />
-            <button onclick="getAnswer()">Submit</button>
-        </div>
-        <div id="output" class="answer"></div>
+    <section id="home">
+        <h2>Welcome to Mithai & Chai Tees</h2>
+        <p>Explore our custom T-shirts inspired by your favorite mithai and chai!</p>
     </section>
 
-    <section id="ai-section">
-        <h2>AI Math Assistant</h2>
-        <textarea id="aiInput" placeholder="Type your question for the AI..." rows="4" cols="50"></textarea>
-        <button onclick="getAIResponse()">Ask AI</button>
-        <div id="aiOutput" class="answer"></div>
+    <section id="shop">
+        <h2>Our Collection</h2>
+        <div class="product">
+            <img src="https://via.placeholder.com/250x250?text=Chai+T-shirt" alt="Chai T-shirt" class="product-image">
+            <h3>Chai T-shirt</h3>
+            <p>Deliciously brewed design, perfect for chai lovers!</p>
+            <button onclick="openLightbox('https://via.placeholder.com/500x500?text=Chai+T-shirt')">View Larger</button>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/250x250?text=Mithai+T-shirt" alt="Mithai T-shirt" class="product-image">
+            <h3>Mithai T-shirt</h3>
+            <p>Sweet design featuring your favorite mithai treats!</p>
+            <button onclick="openLightbox('https://via.placeholder.com/500x500?text=Mithai+T-shirt')">View Larger</button>
+        </div>
     </section>
 
-    <section class="language-section">
-        <h2>Programming Language Examples</h2>
-        <div>
-            <h3>Python</h3>
-            <pre><code>def add(a, b):
-  return a + b
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form class="contact-form" id="contactForm">
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            <textarea id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
 
-def subtract(a, b):
-  return a - b
+    <footer>
+        <p>&copy; 2024 Mithai & Chai Tees. All rights reserved.</p>
+    </footer>
 
-def multiply(a, b):
-  return a * b
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightboxImage" src="" alt="Product Image">
+    </div>
 
-def divide(a, b):
-  if b != 0:
-      return a / b
-  else:
-      return "Cannot divide by zero."
-
-def power(base, exp):
-  return base ** exp
-
-def factorial(n):
-  if n == 0:
-      return 1
-  else:
-      return n * factorial(n - 1)
-
-def fibonacci(n):
-  if n <= 0:
-      return 0
-  elif n == 1:
-      return 1
-  else:
-      return fibonacci(n - 1) + fibonacci(n - 2)
-
-def prime_check(n):
-    if n <= 1:
-        return False
-    for i in range(2, int(n**0.5) + 1):
-        if n % i == 0:
-            return False
-    return True
-
-def gcd(a, b):
-    while b:
-        a, b = b, a % b
-    return a
-
-def lcm(a, b):
-    return abs(a * b) // gcd(a, b)</code></pre>
-        </div>
-        <div>
-            <h3>JavaScript</h3>
-            <pre><code>function add(a, b) {
-  return a + b;
-}
-
-function subtract(a, b) {
-  return a - b;
-}
-
-function multiply(a, b) {
-  return a * b;
-}
-
-function divide(a, b) {
-  if (b !== 0) {
-      return a / b;
-  } else {
-      return "Cannot divide by zero.";
-  }
-}
-
-function power(base, exp) {
-  return Math.pow(base, exp);
-}
-
-function factorial(n) {
-  if (n === 0) {
-      return 1;
-  } else {
-      return n * factorial(n - 1);
-  }
-}
-
-function fibonacci(n) {
-  if (n <= 0) return 0;
-  if (n === 1) return 1;
-  return fibonacci(n - 1) + fibonacci(n - 2);
-}
-
-function primeCheck(n) {
-    if (n <= 1) return false;
-    for (let i = 2; i <= Math.sqrt(n); i++) {
-        if (n % i === 0) return false;
-    }
-    return true;
-}
-
-function gcd(a, b) {
-    while (b) {
-        let temp = b;
-        b = a % b;
-        a = temp;
-    }
-    return a;
-}
-
-function lcm(a, b) {
-    return Math.abs(a * b) / gcd(a, b);
-}</code></pre>
-        </div>
-        <div>
-            <h3>Java</h3>
-            <pre><code>public class MathOperations {
-    public int add(int a, int b) {
-        return a + b;
-    }
-
-    public int subtract(int a, int b) {
-        return a - b;
-    }
-
-    public int multiply(int a, int b) {
-        return a * b;
-    }
-
-    public double divide(int a, int b) {
-        if (b != 0) {
-            return (double) a / b;
-        } else {
-            throw new IllegalArgumentException("Cannot divide by zero.");
+    <script>
+        function openLightbox(imageSrc) {
+            document.getElementById('lightbox').classList.add('active');
+            document.getElementById('lightboxImage').src = imageSrc;
         }
-    }
 
-    public double power(double base, int exp) {
-        return Math.pow(base, exp);
-    }
-
-    public int factorial(int n) {
-        if (n == 0) {
-            return 1;
-        } else {
-            return n * factorial(n - 1);
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
         }
-    }
 
-    public int fibonacci(int n) {
-        if (n <= 0) return 0;
-        if (n == 1) return 1;
-        return fibonacci(n - 1) + fibonacci(n - 2);
-    }
-
-    public boolean primeCheck(int n) {
-        if (n <= 1) return false;
-        for (int i = 2; i <= Math.sqrt(n); i++) {
-            if (n % i == 0) return false;
-        }
-        return true;
-    }
-
-    public int gcd(int a, int b) {
-        while (b != 0) {
-            int temp = b;
-            b = a % b;
-            a = temp;
-        }
-        return a;
-    }
-
-    public int lcm(int a, int b) {
-        return Math.abs(a * b) / gcd(a, b);
-    }
-}</code></pre>
-        </div>
-        <div>
-            <h3>C++</h3>
-            <pre><code>#include &lt;iostream&gt;
-
-class MathOperations {
-public:
-    int add(int a, int b) {
-        return a + b;
-    }
-
-    int subtract(int a, int b) {
-        return a - b;
-    }
-
-    int multiply(int a, int b) {
-        return a * b;
-    }
-
-    double divide(int a, int b) {
-        if (b != 0) {
-            return (double)a / b;
-        } else {
-            throw std::invalid_argument("Cannot divide by zero.");
-        }
-    }
-
-    double power(double base, int exp) {
-        return pow(base, exp);
-    }
-
-    int factorial(int n) {
-        if (n == 0) {
-            return 1;
-        } else {
-            return n * factorial(n - 1);
-        }
-    }
-
-    int fibonacci(int n) {
-        if (n <= 0) return 0;
-        if (n == 1) return 1;
-        return fibonacci(n - 1) + fibonacci(n - 2);
-    }
-
-    bool primeCheck(int n) {
-        if (n <= 1) return false;
-        for (int i = 2; i <= sqrt(n); i++) {
-            if (n % i == 0) return false;
-        }
-        return true;
-    }
-
-    int gcd(int a, int b) {
-        while (b != 0) {
-            int temp = b;
-            b = a % b;
-            a = temp;
-        }
-        return a;
-    }
-
-    int lcm(int a, int b) {
-        return abs(a * b) / gcd(a, b);
-    }
-};</code></pre>
-        </div>
-        <div>
-            <h3>C#</h3>
-            <pre><code>public class MathOperations {
-    public int Add(int a, int b) {
-        return a + b;
-    }
-
-    public int Subtract(int a, int b) {
-        return a - b;
-    }
-
-    public int Multiply(int a, int b) {
-        return a * b;
-    }
-
-    public double Divide(int a, int b) {
-        if (b != 0) {
-            return (double)a / b;
-        } else {
-            throw new ArgumentException("Cannot divide by zero.");
-        }
-    }
-
-    public double Power(double base, int exp) {
-        return Math.Pow(base, exp);
-    }
-
-    public int Factorial(int n) {
-        if (n == 0) {
-            return 1;
-        } else {
-            return n * Factorial(n - 1);
-        }
-    }
-
-    public int Fibonacci(int n) {
-        if (n <= 0) return 0;
-        if (n == 1) return 1;
-        return Fibonacci(n - 1) + Fibonacci(n - 2);
-    }
-
-    public bool PrimeCheck(int n) {
-        if (n <= 1) return false;
-        for (int i = 2; i <= Math.Sqrt(n); i++) {
-            if (n % i == 0) return false;
-        }
-        return true;
-    }
-
-    public int Gcd(int a, int b) {
-        while (b != 0) {
-            int temp = b;
-            b = a % b;
-            a = temp;
-        }
-        return a;
-    }
-
-    public int Lcm(int a, int b) {
-        return Math.Abs(a * b) / Gcd(a, b);
-    }
-}</code></pre>
-        </div>
-        <div>
-            <h3>Ruby</h3>
-            <pre><code>def add(a, b)
-  a + b
-end
-
-def subtract(a, b)
-  a - b
-end
-
-def multiply(a, b)
-  a * b
-end
-
-def divide(a, b)
-  return "Cannot divide by zero." if b == 0
-  a / b
-end
-
-def power(base, exp)
-  base ** exp
-end
-
-def factorial(n)
-  return 1 if n == 0
-  n * factorial(n - 1)
-end
-
-def fibonacci(n)
-  return 0 if n <= 0
-  return 1 if n == 1
-  fibonacci(n - 1) + fibonacci(n - 2)
-end
-
-def prime_check(n)
-  return false if n <= 1
-  (2..Math.sqrt(n)).none? { |i| n % i == 0 }
-end
-
-def gcd(a, b)
-  while b != 0
-    a, b = b, a % b
-  end
-  a
-end
-
-def lcm(a, b)
-  (a * b).abs / gcd(a, b)
-end</code></pre>
-        </div>
-        <div>
-            <h3>PHP</h3>
-            <pre><code>function add($a, $b) {
-  return $a + $b;
-}
-
-function subtract($a, $b) {
-  return $a - $b;
-}
-
-function multiply($a, $b) {
-  return $a * $b;
-}
-
-function divide($a, $b) {
-  if ($b != 0) {
-      return $a / $b;
-  } else {
-      return "Cannot divide by zero.";
-  }
-}
-
-function power($base, $exp) {
-  return pow($base, $exp);
-}
-
-function factorial($n) {
-  if ($n == 0) {
-      return 1;
-  } else {
-      return $n * factorial($n - 1);
-  }
-}
-
-function fibonacci($n) {
-  if ($n <= 0) return 0;
-  if ($n == 1) return 1;
-  return fibonacci($n - 1) + fibonacci($n - 2);
-}
-
-function prime_check($n) {
-  if ($n <= 1) return false;
-  for ($i = 2; $i <= sqrt($n); $i++) {
-      if ($n % $i == 0) return false;
-  }
-  return true;
-}
-
-function gcd($a, $b) {
-  while ($b != 0) {
-    $temp = $b;
-    $b = $a % $b;
-    $a = $temp;
-  }
-  return $a;
-}
-
-function lcm($a, $b) {
-  return abs($a * $b) / gcd($a, $b);
-}</code></pre>
-        </div>
-        <div>
-            <h3>Swift</h3>
-            <pre><code>func add(a: Int, b: Int) -> Int {
-  return a + b
-}
-
-func subtract(a: Int, b: Int) -> Int {
-  return a - b
-}
-
-func multiply(a: Int, b: Int) -> Int {
-  return a * b
-}
-
-func divide(a: Int, b: Int) -> String {
-  if b != 0 {
-      return String(Double(a) / Double(b))
-  } else {
-      return "Cannot divide by zero."
-  }
-}
-
-func power(base: Double, exp: Int) -> Double {
-  return pow(base, Double(exp))
-}
-
-func factorial(n: Int) -> Int {
-  if n == 0 {
-      return 1
-  } else {
-      return n * factorial(n: n - 1)
-  }
-}
-
-func fibonacci(n: Int) -> Int {
-  if n <= 0 { return 0 }
-  if n == 1 { return 1 }
-  return fibonacci(n: n - 1) + fibonacci(n: n - 2)
-}
-
-func primeCheck(n: Int) -> Bool {
-  if n <= 1 { return false }
-  for i in 2...Int(sqrt(Double(n))) {
-      if n % i == 0 { return false }
-  }
-  return true
-}
-
-func gcd(a: Int, b: Int) -> Int {
-  var a = a
-  var b = b
-  while b != 0 {
-      let temp = b
-      b = a % b
-      a = temp
-  }
-  return a
-}
-
-func lcm(a: Int, b: Int) -> Int {
-  return abs(a * b) / gcd(a: a, b: b)
-}</code></pre>
-        </div>
-        <div>
-            <h3>Go</h3>
-            <pre><code>func add(a int, b int) int {
-  return a + b
-}
-
-func subtract(a int, b int) int {
-  return a - b
-}
-
-func multiply(a int, b int) int {
-  return a * b
-}
-
-func divide(a int, b int) string {
-  if b != 0 {
-      return fmt.Sprintf("%f", float64(a)/float64(b))
-  } else {
-      return "Cannot divide by zero."
-  }
-}
-
-func power(base float64, exp int) float64 {
-  return math.Pow(base, float64(exp))
-}
-
-func factorial(n int) int {
-  if n == 0 {
-      return 1
-  } else {
-      return n * factorial(n - 1)
-  }
-}
-
-func fibonacci(n int) int {
-  if n <= 0 {
-      return 0
-  } else if n == 1 {
-      return 1
-  }
-  return fibonacci(n - 1) + fibonacci(n - 2)
-}
-
-func primeCheck(n int) bool {
-  if n <= 1 {
-      return false
-  }
-  for i := 2; i <= int(math.Sqrt(float64(n))); i++ {
-      if n % i == 0 {
-          return false
-      }
-  }
-  return true
-}
-
-func gcd(a int, b int) int {
-  for b != 0 {
-      a, b = b, a % b
-  }
-  return a
-}
-
-func lcm(a int, b int) int {
-  return int(math.Abs(float64(a * b))) / gcd(a, b)
-}</code></pre>
-        </div>
-        <div>
-            <h3>Kotlin</h3>
-            <pre><code>fun add(a: Int, b: Int): Int {
-  return a + b
-}
-
-fun subtract(a: Int, b: Int): Int {
-  return a - b
-}
-
-fun multiply(a: Int, b: Int): Int {
-  return a * b
-}
-
-fun divide(a: Int, b: Int): String {
-  return if (b != 0) {
-      (a.toDouble() / b).toString()
-  } else {
-      "Cannot divide by zero."
-  }
-}
-
-fun power(base: Double, exp: Int): Double {
-  return Math.pow(base, exp.toDouble())
-}
-
-fun factorial(n: Int): Int {
-  return if (n == 0) 1 else n * factorial(n - 1)
-}
-
-fun fibonacci(n: Int): Int {
-  return when {
-      n <= 0 -> 0
-      n == 1 -> 1
-      else -> fibonacci(n - 1) + fibonacci(n - 2)
-  }
-}
-
-fun primeCheck(n: Int): Boolean {
-  if (n <= 1) return false
-  for (i in 2..Math.sqrt(n.toDouble()).to
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting the traditional way
+            alert('Thank you for your message! We will get back to you soon.');
+            // You can add code here to handle form submission (e.g., send to an email or API)
+        });
+    </script>
+</body>
+</html>
